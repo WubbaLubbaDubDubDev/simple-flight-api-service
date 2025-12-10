@@ -27,20 +27,43 @@
 - **Spring Boot**
 - REST API
 
-## Швидкий старт
+## Швидкий старт (Локально)
 
 1. Клонуйте репозиторій:
-    ```
+    ```bash
     git clone https://github.com/WubbaLubbaDubDubDev/simple-flight-api-service.git
     ```
 2. Перейдіть у папку:
-    ```
+    ```bash
     cd simple-flight-api-service
     ```
 3. Запустіть застосунок:
+    ```bash
+    ./gradlew bootRun
     ```
-    ./mvnw spring-boot:run
+
+## Запуск за допомогою Docker Compose
+
+Для запуску у ізольованому контейнері виконайте наступні кроки:
+
+1. **Зберіть JAR-файл застосунку:**
+   *(Цей крок необхідний, оскільки Dockerfile використовує локально зібраний файл)*
+    ```bash
+    ./gradlew clean build -x test
     ```
+
+2. **Запустіть контейнер:**
+    ```bash
+    docker-compose up --build
+    ```
+    *Щоб запустити у фоновому режимі, додайте прапорець `-d`: `docker-compose up -d`*
+
+3. **Зупинка застосунку:**
+    ```bash
+    docker-compose down
+    ```
+
+Застосунок буде доступний за адресою: `http://localhost:8080`
 
 ## Приклади запитів
 
